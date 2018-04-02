@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@if (TempData["alert"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        Send success.
+    </div>
+}
+
+@using (Html.BeginForm("SentMessage", "Home", FormMethod.Post))
+{
+    <form class="was-validated">
+        <div class="form-group">
+            <label>Message</label>
+            <input type="text" class="form-control is-valid" name="message" placeholder="Your message" value="" required>
+            <div class="invalid-feedback">Place add your message</div>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="customCheck1" onclick="myFunction1()">
+            <label class="custom-control-label" for="customCheck1">Add sticker.</label>
+        </div>
+
+        <div class="form-group">
+            <label id="LSTKID" style="display:none">Sticker id</label>
+            <input type="text" id="STKID" name="stkId" class="form-control" placeholder="STKID" style="display:none">
+            <label id="LSTKPKGID" style="display:none">Sticker package id</label>
+            <input type="text" id="STKPKGID" name="stkPkId" class="form-control" placeholder="STKPKGID" style="display:none">
+            <a href="https://devdocs.line.me/files/sticker_list.pdf" id="linkSticker" class="list-group-item list-group-item-action list-group-item-secondary" style="display:none">CLICK!! Sticker list.</a>
+        </div>
+        <button class="btn btn-outline-success form-control" type="submit">Submit</button>
+    </form>
+}
+
+
+
+    <script>
+      
+        function myFunction1() {
+            var checkBox = document.getElementById("customCheck1");
+            var text = document.getElementById("linkSticker");
+            var STKID = document.getElementById("STKID");
+            var STKPKGID = document.getElementById("STKPKGID");
+            var LSTKID = document.getElementById("LSTKID");
+            var LSTKPKGID = document.getElementById("LSTKPKGID");
+            if (checkBox.checked == true) {
+                text.style.display = "block";
+                STKID.style.display = "block";
+                STKPKGID.style.display = "block"
+                LSTKID.style.display = "block";
+                LSTKPKGID.style.display = "block"
+                STKID.setAttribute("required", "");
+                STKID.required = true;
+                STKPKGID.setAttribute("required", "");
+                STKPKGID.required = true;
+            } else {
+                text.style.display = "none";
+                STKID.style.display = "none";
+                STKPKGID.style.display = "none";
+                LSTKID.style.display = "none";
+                LSTKPKGID.style.display = "none";
+            }
+        }
+    </script>
