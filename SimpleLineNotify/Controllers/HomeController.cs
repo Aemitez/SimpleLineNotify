@@ -38,7 +38,7 @@ namespace SimpleLineNotify.Controllers
                 request.ContentLength = data.Length;
                 #region Token
                 //Add Token
-                string lineNotifyToken = "lKKM4maKGZkMg0de7McFaadYmZHAr9l9tQ5kbqIXuW0";
+                string lineNotifyToken = "?????????????????????";
                 #endregion
                 request.Headers.Add("Authorization", "Bearer " + lineNotifyToken);
 
